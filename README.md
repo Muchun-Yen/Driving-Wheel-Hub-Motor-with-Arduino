@@ -7,8 +7,10 @@ The follows picures shows the wheel hub motor which we used with 6" diameter, 30
 ![BLDC Drive Board](https://github.com/Muchun-Yen/Driving-Wheel-Hub-Motor-with-Arduino/blob/master/BLDC%20Drive%20Board.png)
 
 In this system architecture, we need a board with at least 2 serial ports for communication between motor drive board and upper device.
-Therefor We choosed the Arduino mega 2560 which has 3 HW serial ports.
-one Arduino mega 2560 board works for control the left wheel hub motor. Another is doing the same thing for right wheel hub motor.
+Therefor We choosed the Arduino mega 2560 which has 3 HW serial ports
+
+There are three separate Arduino mega 2560 board.
+one Arduino mega 2560 board works for control the left wheel hub motor. Another one is doing the same thing for right wheel hub motor.
 Both of the two Arduino mega 2560 boards work independent and always ready to receive control messages from upper device, and feedback the motor control related infomation to it.
 
 the last one Arduino Mega 2560 board works for build a bridge for connect ROS system and motor control system.
