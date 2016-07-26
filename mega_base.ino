@@ -1,6 +1,6 @@
 /*************************************************************
 [Version]
-20160701
+20160711
 [HW Arduino Mega 2560]
 Serial port (Default serial for Connect ROSSerial )
 Serial1 port (connect to Motor control board Right wheel)
@@ -57,6 +57,8 @@ ros::Publisher p("feedback_wheel_angularVel", &vel_msg);
 void messageCb(const geometry_msgs::Vector3& msg){
   omega_left_target = msg.x;
   omega_right_target = msg.y;
+  sendCmd_wheel_angularVel_L();
+  sendCmd_wheel_angularVel_R();
 }
 
 ros::Subscriber<geometry_msgs::Vector3> s("cmd_wheel_angularVel", messageCb);
@@ -97,8 +99,8 @@ void loop(){
     dT = millis() - lastMilli;
     lastMilli = millis();
 
-    sendCmd_wheel_angularVel_L();
-    sendCmd_wheel_angularVel_R();
+//    sendCmd_wheel_angularVel_L();
+//    sendCmd_wheel_angularVel_R();
 
     vel_msg.x = omega_left_actual;
     vel_msg.y = omega_right_actual;
@@ -117,7 +119,7 @@ void readFeadback_angularVel_L(){
       byte rL_L = commandArray_L[1];
       char rP_L = commandArray_L[2];
       if (rP_L == '}'){
-        left_actual_receive = (rH_L << 8) + rL_L;
+        left_actual_receive =(rH_L << 8) + rL_L;
 //限制最快為2 rev/sec
 //        omega_left_actual = double (left_actual_receive * 0.00038349559007538);   //convert received 16 bit integer to actual speed 12.566/32767=3.834955900753807e-4=0.00038349559007538
 //限制最快為1 rev/sec        
