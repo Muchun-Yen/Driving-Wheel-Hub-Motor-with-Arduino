@@ -65,4 +65,23 @@ When z/w value equal 1 it is operating close loop, which control by speed settin
 When z/w value equal 2 it is operating open loop, which control by Vq setting and no PID control system.
 
 
+## Test in Andbot 
+If you already setup a base of robot (in my case;using the XU4 platform and ROS architecture)
+you can run our roslunch and try to control the robot as the following...
+
+#### 1.Open a terminator to launch the andbot's ROS launch
+$ roslunch andbot andbot.launch
+
+#### 2.Open the other terminator to control the robot as the follows <Using Tab will easy to complete the command statement>
+$ rostopic pub /andbot/cmd_vel geometry_msgs/Twist "x: 0.0 
+y: 0.0 
+z: 0.0"
+w: 0.0"
+=======
+"x: 0.0 
+y: 0.0 
+z: 0.0"
+w: 0.0"
+
+change the liear velocity by the x value.(Try 0.18)
 
